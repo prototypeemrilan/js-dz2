@@ -1,0 +1,23 @@
+.big {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-top: 250px;
+}
+.bigg {
+    width: 50%;
+    height: 400px;
+    background-color: yellowgreen;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40px;
+}
+.emir {
+    border-radius: 60px;
+    background-color: darkgreen;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+}
