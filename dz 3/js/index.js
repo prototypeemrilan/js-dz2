@@ -37,52 +37,36 @@ function currentSlide(n) {
   showSlides(slideIndex = n);
 }
 
-function showSlides (n) {
-    let slides = document.querySelectorAll(".tabheader__item");
-    let sliderSlide = document.querySelectorAll(".tabcontent");
-    if (n > slides.length && n > sliderSlide.length) {
-      slideIndex += 1;
-    }
-    if (n < 0) {
-        slideIndex = slides.length && slideIndex == sliderSlide.length;
-    }
-    for (let slide of slides) {
-      slide.classList.remove("tabheader__item_active");
-    }
-    slides[n].classList.add("tabheader__item_active");
+function showSlides(n) {
+  let slides = document.querySelectorAll(".tabheader__item");
+  let sliderSlide = document.querySelectorAll(".tabcontent");
+  if (n > slides.length && n > sliderSlide.length) {
+    slideIndex += 1;
+  }
+  if (n < 0) {
+    slideIndex = slides.length && slideIndex == sliderSlide.length;
+  }
+  for (let slide of slides) {
+    slide.classList.remove("tabheader__item_active");
+  }
+  slides[n].classList.add("tabheader__item_active");
 
-    for (let slide of sliderSlide) {
-        slide.style.display = "none";
-    }
-    sliderSlide[slideIndex].style.display = "block";
+  for (let slide of sliderSlide) {
+    slide.style.display = "none";
+  }
+  sliderSlide[slideIndex].style.display = "block";
 
 }
 
-let timer = setInterval(function(){
-    slideIndex++; {
-      if (slideIndex >=4) {
-        slideIndex = 0
-      }
+let timer = setInterval(function () {
+  {
+    slideIndex++;
+    if (slideIndex > 3) {
+      slideIndex = 0
     }
-    showSlides(slideIndex);
-  },5000);
-
-const button = document.getElementById("btn");
-
-window.onscroll = function() { scrol() };
-
-function scrol() {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        button.style.display = "block";
-    } else {
-        button.style.display = "none";
-    }
-}
-
-function topFunction() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-}
+  }
+  showSlides(slideIndex);
+}, 3000);
 
 const modal = document.querySelector(".modal");
 const modalTrigger = document.querySelector(".btn_white");
@@ -110,3 +94,16 @@ modal.addEventListener("click", (event) => {
 });
 
 closeModalBtn.addEventListener("click", closeModal);
+
+let  intElemScrollTop = window.scrollTop;
+window.scrollTop = 0;
+if (window.scrollTop > 3740){
+  openModal()
+}
+
+window.addEventListener("scroll", () => {
+  console.log(window.pageYOffset)
+  if (window.pageYOffset > 3745) {
+    openModal()
+  }
+});
